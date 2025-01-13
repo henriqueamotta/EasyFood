@@ -1,0 +1,11 @@
+<h1>Ingredientes</h1>
+<%= link_to "Adicionar Ingrediente", new_ingredient_path, class: "btn btn-primary" %>
+<ul>
+  <% @ingredients.each do |ingredient| %>
+    <li>
+      <%= ingredient.name %>
+      <%= link_to "Editar", edit_ingredient_path(ingredient) %>
+      <%= link_to "Excluir", ingredient_path(ingredient), method: :delete, data: { confirm: "Tem certeza?" } %>
+    </li>
+  <% end %>
+</ul>

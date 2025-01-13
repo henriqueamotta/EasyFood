@@ -1,0 +1,10 @@
+<h1>Adicionar Novo Ingrediente</h1>
+<%= form_with model: @ingredient, local: true do |f| %>
+  <div>
+    <%= f.label :name, "Nome do Ingrediente" %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.submit "Salvar Ingrediente" %>
+  </div>
+<% end %>
