@@ -1,2 +1,52 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasyFood - Descubra Receitas</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="bg-gray-800 text-black p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">
+        🍽️ EasyFood
+      </h1>
+      <nav>
+        <a href="/" class="px-4">Home</a>
+        <a href="/ingredients/new" class="px-4">Adicionar Ingredientes</a>
+        <a href="/recipes" class="px-4">Receitas</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="container mx-auto p-8">
+    <h2 class="text-4xl font-bold text-center mb-4">
+      Descubra Receitas com os Ingredientes que você já tem!
+    </h2>
+    <p class="text-center text-gray-600 mb-8">
+      Adicione os ingredientes disponíveis em sua casa e receba sugestões personalizadas de pratos deliciosos.
+    </p>
+
+    <!-- Formulário de Busca -->
+    <div class="text-center">
+      <%= form_with url: recipes_path, method: :get, local: true do |f| %>
+        <%= f.label :ingredients, "Quais ingredientes você tem?", class: "block mb-2" %>
+        <%= f.text_field :ingredients, placeholder: "Ex: Tomate, Arroz, Frango", class: "border p-2 rounded w-1/2" %>
+        <%= f.submit "Encontrar Receitas", class: "bg-blue-500 text-black px-4 py-2 rounded mt-4" %>
+      <% end %>
+    </div>
+
+    <!-- Receitas Populares (IDEIA - Opcional) -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-black text-center p-4">
+    <p>©2025 EasyFood. Todos os direitos reservados.</p>
+  </footer>
+</body>
+
+</html>
