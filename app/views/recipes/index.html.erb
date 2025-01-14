@@ -1,0 +1,22 @@
+<h1>Receitas</h1>
+<%= form_with url: recipes_path, method: :get, local: true do |f| %>
+  <div>
+    <%= f.label :ingredients, "Buscar por Ingredientes" %>
+    <%= f.text_field :ingredients, placeholder: "Ex: tomate, queijo" %>
+    <%= f.submit "Buscar" %>
+  </div>
+<% end %>
+
+<ul>
+  <% @recipes.each do |recipe| %>
+    <li>
+      <h2><%= recipe.name %></h2>
+      <p><%= truncate(recipe.instructions, length: 100) %></p>
+      <p>Ingredientes: <%= recipe.ingredients.pluck(:name).join(", ") %></p>
+      <%= link_to "Ver Receita", recipe_path(recipe) %>
+      <%= link_to "Editar", edit_recipe_path(recipe) %>
+      <%= link_to "Excluir", recipe_path(recipe), method: :delete, data: { confirm: "Tem certeza?" } %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Adicionar Nova Receita", new_recipe_path, class: "btn btn-primary" %>
