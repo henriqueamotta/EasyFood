@@ -33,10 +33,10 @@
 
     <!-- Formulário de Busca -->
     <div class="text-center">
-      <%= form_with url: recipes_path, method: :get, local: true do |f| %>
+      <%= form_with url: new_recipe_path, method: :get, local: true do |f| %>
         <%= f.label :ingredients, "Quais ingredientes você tem?", class: "block mb-2" %>
         <%= f.text_field :ingredients, placeholder: "Ex: Tomate, Arroz, Frango", class: "border p-2 rounded w-1/2" %>
-        <%= f.submit "Encontrar Receitas", class: "bg-blue-500 text-black px-4 py-2 rounded mt-4" %>
+        <%= f.submit "Preparar Receita", class: "bg-blue-500 text-black px-4 py-2 rounded mt-4" %>
       <% end %>
     </div>
 

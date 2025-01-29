@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   }
 
   resources :ingredients, only: [:index, :new, :create]
-  resources :recipes, only: [:index, :show]
+  resources :recipes, only: [:index, :show, :new, :create]
   root to: "pages#home"
 end
