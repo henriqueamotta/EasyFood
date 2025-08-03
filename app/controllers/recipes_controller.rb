@@ -23,7 +23,8 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      redirect_to recipes_path, notice: 'Receita criada com sucesso!'
+      @recipe.instructions
+      redirect_to @recipe, notice: 'Receita criada com sucesso!'
     else
       render :new, status: :unprocessable_entity
     end

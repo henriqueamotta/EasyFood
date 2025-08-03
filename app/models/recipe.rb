@@ -3,9 +3,12 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :recipe_ingredients
 
   # validates :name, presence: true, uniqueness: true
+  validates :ingredients, presence: true
   validates :instructions, presence: true
 
-  # after_save :set_instructions, if: -> { saved_change_to_name? || saved_change_to_ingredients? }
+  after_create :set_instructions, if: -> { instructions.blank? }
+
+  after_save :set_instructions, if: -> { saved_change_to_ingredient_ids? && instructions.blank? }
 
   def instructions
     if super.blank?
@@ -18,6 +21,9 @@ class Recipe < ApplicationRecord
   private
 
   def set_instructions # rubocop:disable Metrics/MethodLength
+    # Debug: Verifique os ingredientes
+    Rails.logger.debug "Ingredientes: #{ingredients.pluck(:name).join(', ')}"
+
     user = OpenAI::Client.new
     response = user.chat(parameters: {
                            model: "gpt-4",

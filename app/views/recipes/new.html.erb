@@ -1,18 +1,23 @@
-<h1><%= action_name == "new" ? "Criar Nova Receita" : "Editar Receita" %></h1>
-<%= form_with model: @recipe, local: true do |f| %>
+<!-- app/views/recipes/new.html.erb -->
+<h1>Nova Receita</h1>
+
+<%= form_with model: @recipe, local: true do |form| %>
   <div>
-    <%= f.label :name, "Nome da Receita" %>
-    <%= f.text_field :name %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
   </div>
+
   <div>
-    <%= f.label :instructions, "Instruções" %>
-    <%= f.text_area :instructions %>
+    <%= form.label :ingredients %>
+    <%= form.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
   </div>
+
   <div>
-    <%= f.label :ingredient_ids, "Ingredientes" %>
-    <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+    <%= form.submit 'Criar Receita' %>
   </div>
-  <div>
-    <%= f.submit "Salvar Receita" %>
-  </div>
+<% end %>
+
+<% if @recipe.instructions.present? %>
+  <h2>Sugestão de Receita:</h2>
+  <p><%= @recipe.instructions %></p>
 <% end %>
