@@ -1,0 +1,8 @@
+<h1><%= @recipe.title %></h1>
+<h3>Ingredientes Usados:</h3>
+<p><%= @recipe.ingredients %></p> <!-- Exibe os ingredientes da receita -->
+<hr>
+<h3>Modo de Preparo:</h3>
+<p><%= simple_format(@recipe.instructions) %></p> <!-- Exibe as instruções de preparo da receita, formatando quebras de linha -->
+<br>
+<%= link_to "Ver todas as minhas receitas", recipes_path %>
