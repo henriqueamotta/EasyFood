@@ -1,0 +1,11 @@
+<h1>Gerar Nova Receita</h1>
+<p>Descreva os ingredientes que você tem a dispsição. Seja específico para melhores resultados!</p>
+<% form_with(model: @recipe) do |form| %> <!-- Formulário para criar uma nova receita -->
+  <div>
+    <%= form.label :ingredients, "Ingredientes" %> <!-- Rótulo para o campo de ingredientes -->
+    <%= form.text_area :ingredients, rows: 5, placeholder: "Ex: 2 peitos de frango, 1 lata de tomate pelado, 1 cebola, 3 dentes de alho, macarrão..." %> <!-- Área de texto para inserir os ingredientes -->
+  </div>
+  <div>
+    <%= form.submit "Gerar Receita" %> <!-- Botão para enviar o formulário e gerar a receita -->
+  </div>
+<% end %>

@@ -23,6 +23,19 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <% if user_signed_in? %> <!-- Verifica se o usuário está autenticado -->
+        <span>Olá, <%= current_user.email %>!</span> <!-- Exibe o nome do usuário autenticado -->
+        <%= link_to "Minhas Receitas", recipes_path %> <!-- Link para a página de receitas do usuário -->
+        <%= button_to "Sair", destroy_user_session_path, method: :delete %> <!-- Botão para sair da sessão do usuário -->
+    <% else %>
+        <%= link_to "Entrar", new_user_session_path %> <!-- Link para a página de login -->
+        <%= link_to "Cadastrar", new_user_registration_path %> <!-- Link para a página de registro -->
+    <% end %>
+      </nav>
+      <hr>
+    </header>
     <%= yield %>
   </body>
 </html>
