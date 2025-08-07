@@ -1,0 +1,12 @@
+<h1>Minhas Receitas</h1>
+<%= link_to "Gerar Nova Receita", new_recipe_path %> <!-- Link para criar uma nova receita -->
+<hr>
+<% if @recipes.any? %> <!-- Verifica se há receitas para exibir -->
+  <ul>
+    <% @recipes.each do |recipe| %> <!-- Itera sobre cada receita -->
+      <li><%= link_to recipe.title, recipe %></li> <!-- Link para exibir os detalhes da receita -->
+    <% end %>
+  </ul>
+<% else %> <!-- Se não houver receitas -->
+  <p>Você ainda não gerou nenhuma receita. Que tal começar agora?</p>
+<% end %>
