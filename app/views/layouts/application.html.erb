@@ -23,6 +23,10 @@
   </head>
 
   <body>
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type %>"><%= msg %></div>
+    <% end %>
+
     <header>
       <nav>
         <% if user_signed_in? %> <!-- Verifica se o usuário está autenticado -->

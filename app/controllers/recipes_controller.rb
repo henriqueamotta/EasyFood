@@ -16,20 +16,29 @@ class RecipesController < ApplicationController
   def create
     @recipe = current_user.recipes.new(recipe_params) # Cria uma nova receita associada ao usuário logado
 
-    @recipe.title = "Receita para: #{@recipe.ingredients.truncate(30)}" # Define o título da receita com base nos ingredientes
-    @recipe.instructions = "Instruções serão geradas pela IA em breve..." # Placeholder para instruções
+    begin # Inicia o bloco de tratamento de exceções
 
-    if @recipe.save
-      redirect_to @recipe, notice: "Receita criada com sucesso! (IA em breve)" # Redireciona para a receita recém-criada com uma mensagem de sucesso
-    else
-      render :new, status: :unprocessable_entity # Renderiza o formulário novamente em caso de erro
+      service_response = RecipeGeneratorService.new(@recipe.ingredients).call # Chama o serviço para gerar a receita
+
+      @recipe.title = service_response[:title] # Define o título da receita com base na resposta do serviço
+      @recipe.instructions = service_response[:instructions] # Define as instruções da receita com base na resposta do serviço
+
+      if @recipe.save
+        redirect_to @recipe, notice: "Sua receita foi gerada com sucesso!" # Redireciona para a receita recém-criada com uma mensagem de sucesso
+      else
+        render :new, status: :unprocessable_content # Renderiza o formulário novamente em caso de erro
+      end
+
+    rescue StandardError => e
+    flash[:alert] = "Houve um erro ao gerar sua receita. Por favor, tente novamente." # Captura qualquer erro e exibe uma mensagem de alerta
+    render :new, status: :unprocessable_content # Renderiza o formulário novamente em caso de erro
     end
   end
-end
 
-private
+  private
 
-def recipe_params
+  def recipe_params
   # Permite apenas os parâmetros necessários para criar ou atualizar uma receita
   params.require(:recipe).permit(:ingredients)
+  end
 end
