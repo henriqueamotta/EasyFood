@@ -26,12 +26,12 @@ class RecipesController < ApplicationController
       if @recipe.save
         redirect_to @recipe, notice: "Sua receita foi gerada com sucesso!" # Redireciona para a receita recém-criada com uma mensagem de sucesso
       else
-        render :new, status: :unprocessable_entity # Renderiza o formulário novamente em caso de erro
+        render :new, status: :unprocessable_content # Renderiza o formulário novamente em caso de erro
       end
 
-    rescue StandardError => e # Captura qualquer exceção que ocorra durante o processo
-      flash[:alert] = "Houve um erro ao gerar sua receita. Por favor tente novamente. Erro: #{e.message}" # Exibe uma mensagem de erro em caso de exceção
-      render :new, status: :unprocessable_entity # Renderiza o formulário novamente em caso de erro
+    rescue StandardError => e
+    flash[:alert] = "Houve um erro ao gerar sua receita. Por favor, tente novamente." # Captura qualquer erro e exibe uma mensagem de alerta
+    render :new, status: :unprocessable_content # Renderiza o formulário novamente em caso de erro
     end
   end
 

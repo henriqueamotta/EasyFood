@@ -1,10 +1,10 @@
 class RecipeGeneratorService
-  def initialize(ingredients) # Inicializa o serviço com os ingredientes fornecidos
+  def initialize(ingredients)
     @ingredients = ingredients # Armazena os ingredientes fornecidos
-    @client = OpenAI::Client.new # Cria uma nova instância do cliente OpenAI
+    @client = OpenAI::Client.new # Inicializa o cliente OpenAI com a configuração definida no initializer
   end
 
-  def call # Gera uma receita com os ingredientes fornecidos
+  def call # Método principal que gera a receita
     prompt = <<~PROMPT
       Você é um chef de cozinha especializado em criar receitas deliciosas, saudáveis, criativas e fáceis de preparar. Sua tarefa é gerar uma receita deliciosa e fácil de seguir usando apenas os ingredientes fornecidos.
 
@@ -16,12 +16,10 @@ class RecipeGeneratorService
       TÍTULO: [aqui o título criativo da receita]
       INSTRUÇÕES: [aqui o passo a passo do modo de preparo da receita, com cada passo numerado]
 
-      Ingredientes fornecidos: #{@ingredients.join(', ')}.
-
-      Gere uma receita deliciosa e fácil de seguir usando esses ingredientes. Você pode adicionar ingredientes adicionais, mas deve garantir que a receita seja fácil de seguir e deliciosa.
+      Ingredientes fornecidos: #{@ingredients}
     PROMPT
 
-    response = @client.chat( # Envia a solicitação para o modelo de linguagem
+    response = @client.chat( # Envia a solicitação para a API OpenAI
       parameters: {
         model: "gpt-3.5-turbo",
         messages: [{ role: "user", content: prompt }],
@@ -29,19 +27,18 @@ class RecipeGeneratorService
       }
     )
 
-    generated_text = response.dig("choices", 0, "message", "content") # Obtém o texto gerado pela IA
-
-    parse_generated_text(generated_text) # Analisa o texto gerado para extrair título e instruções
+    generated_text = response.dig("choices", 0, "message", "content") # Extrai o texto gerado da resposta da API
+    parse_generated_text(generated_text) # Analisa o texto gerado e retorna um hash com o título e as instruções
   end
 
   private
 
-  def parse_generated_text(generated_text) # Analisa o texto gerado para extrair título e instruções
-    { title: "Erro ao gerar receita", instructions: text } unless text.include?("TÍTULO:") && text.include?("INSTRUÇÕES:") # Verifica se o texto contém as seções esperadas
+  def parse_generated_text(generated_text) # Método para analisar o texto gerado e extrair o título e as instruções
+    return { title: "Erro: Formato de resposta inválido", instructions: generated_text } unless generated_text&.include?("TÍTULO:") && generated_text&.include?("INSTRUÇÕES:") # Verifica se o texto contém as seções esperadas
 
-    title = text.match(/TÍTULO:\s*(.*)/)[1].strip # Extrai o título da receita
-    instructions = text.match(/INSTRUÇÕES:\s*(.*)/m)[1].strip # Extrai as instruções da receita
+    title = generated_text.match(/TÍTULO:(.*?)INSTRUÇÕES:/m)[1].strip # Extrai o título da receita
+    instructions = generated_text.match(/INSTRUÇÕES:(.*)/m)[1].strip # Extrai as instruções da receita
 
-    { title: title, instructions: instructions } # Retorna um hash com o título e as instruções da receita
+    { title: title, instructions: instructions } # Retorna um hash com o título e as instruções
   end
 end
