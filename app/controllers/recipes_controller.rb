@@ -40,6 +40,6 @@ class RecipesController < ApplicationController
 
   def recipe_params
   # Permite apenas os parâmetros necessários para criar ou atualizar uma receita
-  params.require(:recipe).permit(:ingredients)
+  params.require(:recipe).permit(:ingredients, :title, :instructions, :image_url) # Permite os parâmetros de receita
   end
 end
