@@ -1,2 +1,21 @@
-@import 'bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons';
+// Definição das cores da paleta
+$teal:   #8FB1AE;
+$mint:   #96CEB4;
+$cream:  #FFF5DA;
+$gold:   #FAD266;
+$orange: #D76734;
+
+// Mapeamento das cores para as variáveis semânticas do Bootstrap
+$primary:       $orange; // Cor principal para botões e links
+$secondary:     $teal;   // Cor secundária
+$success:       $mint;   // Cor para ações de sucesso
+$warning:       $gold;   // Cor para avisos
+$light:         $cream;  // Cor de fundo clara
+$dark:          #000000; // Cor escura para texto
+
+// Configurações gerais do corpo da página
+$body-bg:       $light; // Cor de fundo do corpo
+$body-color:    $dark; // Cor do texto do corpo
+
+// Importação do Bootstrap
+@import "bootstrap";
