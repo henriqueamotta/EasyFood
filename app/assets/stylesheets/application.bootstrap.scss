@@ -13,9 +13,18 @@ $warning:       $gold;   // Cor para avisos
 $light:         $cream;  // Cor de fundo clara
 $dark:          #000000; // Cor escura para texto
 
+// Importações do Bootstrap
+@import "bootstrap/scss/functions"; // Importa funções do Bootstrap
+@import "bootstrap/scss/variables"; // Importa variáveis do Bootstrap
+
 // Configurações gerais do corpo da página
 $body-bg:       $light; // Cor de fundo do corpo
 $body-color:    $dark; // Cor do texto do corpo
 
 // Importação do Bootstrap
-@import "bootstrap";
+@import "bootstrap/scss/bootstrap"; // Importa o Bootstrap completo
+
+// Estilos personalizados
+.navbar-custom {
+  background-color: $secondary;
+}
