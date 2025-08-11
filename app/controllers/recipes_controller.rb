@@ -22,6 +22,7 @@ class RecipesController < ApplicationController
 
       @recipe.title = service_response[:title] # Define o título da receita com base na resposta do serviço
       @recipe.instructions = service_response[:instructions] # Define as instruções da receita com base na resposta do serviço
+      @recipe.image_url = service_response[:image_url] # Define a URL da imagem da receita com base na resposta do serviço
 
       if @recipe.save
         redirect_to @recipe, notice: "Sua receita foi gerada com sucesso!" # Redireciona para a receita recém-criada com uma mensagem de sucesso
