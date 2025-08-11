@@ -54,6 +54,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "foreman", require: false
 end
 
 group :test do
@@ -67,3 +68,5 @@ gem "devise", "~> 4.9"
 gem "ruby-openai", "~> 8.1"
 
 gem "dotenv-rails", "~> 3.1", :groups => [:development, :test]
+
+gem "cssbundling-rails", "~> 1.4"
