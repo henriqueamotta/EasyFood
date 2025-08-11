@@ -28,7 +28,7 @@ class RecipeGeneratorService
     )
 
     generated_text = response.dig("choices", 0, "message", "content") # Extrai o texto gerado da resposta da API
-    parse_generated_text(generated_text) # Analisa o texto gerado e retorna um hash com o título e as instruções
+    recipe_data = parse_generated_text(generated_text) # Analisa o texto gerado e retorna um hash com o título e as instruções
 
     image_prompt = "Uma foto deliciosa de #{recipe_data[:title]}, com foco nos detalhes apetitosos do prato." # Cria um prompt para gerar uma imagem da receita
     image_response = @client.images.generate( # Envia a solicitação para a API de geração de imagens

@@ -30,9 +30,16 @@ class RecipesController < ApplicationController
         render :new, status: :unprocessable_content # Renderiza o formulário novamente em caso de erro
       end
 
-    rescue StandardError => e
-    flash[:alert] = "Houve um erro ao gerar sua receita. Por favor, tente novamente." # Captura qualquer erro e exibe uma mensagem de alerta
-    render :new, status: :unprocessable_content # Renderiza o formulário novamente em caso de erro
+    rescue Exception => e
+      # --- Bloco de debug detalhado ---
+      puts "--- ERRO DETALHADO DA API ---"
+      puts "MENSAGEM: #{e.message}"
+      puts "BACKTRACE:"
+      puts e.backtrace.join("\n")
+      puts "-----------------------------"
+
+      flash[:alert] = "A geração da sua receita demorou demais para responder. Por favor, tente novamente." # Captura qualquer erro e exibe uma mensagem de alerta
+      render :new, status: :unprocessable_content # Renderiza o formulário novamente em caso de erro
     end
   end
 
