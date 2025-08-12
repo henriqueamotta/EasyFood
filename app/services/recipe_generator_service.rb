@@ -33,9 +33,10 @@ class RecipeGeneratorService
     image_prompt = "Uma foto deliciosa de #{recipe_data[:title]}, com foco nos detalhes apetitosos do prato." # Cria um prompt para gerar uma imagem da receita
     image_response = @client.images.generate( # Envia a solicitação para a API de geração de imagens
       parameters: {
+        model: "dall-e-3",
         prompt: image_prompt,
         n: 1,
-        size: "256x256"
+        size: "1792x1024"
       }
     )
     image_url = image_response.dig("data", 0, "url") # Extrai a URL da imagem gerada

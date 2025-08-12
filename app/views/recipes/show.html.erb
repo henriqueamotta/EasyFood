@@ -1,14 +1,38 @@
-<% if @recipe.image_url.present? %> <!-- Verifica se há uma URL de imagem disponível -->
-  <%= image_tag @recipe.image_url, alt: @recipe.title, style: "max-width: 50%; height: auto;" %> <!-- Exibe a imagem da receita com estilo para ajustar o tamanho -->
-  <br><br>
-<% end %>
+<div class="row justify-content-center">
+  <div class="col-lg-8">
 
-<h1><%= @recipe.title %></h1>
-<h3>Ingredientes Usados:</h3>
-<p><%= @recipe.ingredients %></p> <!-- Exibe os ingredientes da receita -->
-<hr>
+    <div class="card bg-white border-0 shadow-sm mb-4">
+      <div class="card-body">
 
-<h3>Modo de Preparo:</h3>
-<p><%= simple_format(@recipe.instructions) %></p> <!-- Exibe as instruções de preparo da receita, formatando quebras de linha -->
-<br>
-<%= link_to "Ver todas as minhas receitas", recipes_path %>
+        <%# --- IMAGEM AGORA DENTRO DO CARD-BODY --- %>
+        <% if @recipe.image_url.present? %>
+          <div class="text-center">
+            <%= image_tag @recipe.image_url,
+                          class: "img-fluid rounded-3 mb-4 w-75",
+                          alt: @recipe.title %>
+          </div>
+        <% end %>
+        <%# ------------------------------------ %>
+
+        <h1 class="card-title h2"><%= @recipe.title %></h1>
+
+        <hr>
+
+        <h3 class="h5 text-muted">Ingredientes Usados:</h3>
+        <p class="card-text mb-4">
+          <%= @recipe.ingredients %>
+        </p>
+
+        <h3 class="h5 text-muted">Modo de Preparo:</h3>
+        <div class="card-text">
+          <%= simple_format(@recipe.instructions) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-grid gap-2">
+      <%= link_to "Ver todas as minhas receitas", recipes_path, class: "btn btn-secondary" %>
+    </div>
+
+  </div>
+</div>
