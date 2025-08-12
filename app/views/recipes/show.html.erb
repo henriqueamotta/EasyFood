@@ -1,12 +1,12 @@
-<div class="row justify-content-center">
+<div class="row justify-content-center"> <!-- Início da linha de conteúdo -->
   <div class="col-lg-8">
 
-    <div class="card bg-white border-0 shadow-sm mb-4">
+    <div class="card bg-white border-0 shadow-sm mb-4"> <!-- Card para a receita -->
       <div class="card-body">
 
-        <%# --- IMAGEM AGORA DENTRO DO CARD-BODY --- %>
-        <% if @recipe.image_url.present? %>
-          <div class="text-center">
+        <%# --- IMAGEM DENTRO DO CARD-BODY --- %>
+        <% if @recipe.image_url.present? %> <!-- Verifica se a imagem está presente -->
+          <div class="text-center"> <!-- Centraliza a imagem -->
             <%= image_tag @recipe.image_url,
                           class: "img-fluid rounded-3 mb-4 w-75",
                           alt: @recipe.title %>
@@ -14,17 +14,17 @@
         <% end %>
         <%# ------------------------------------ %>
 
-        <h1 class="card-title h2"><%= @recipe.title %></h1>
+        <h1 class="card-title h2"><%= @recipe.title %></h1> <!-- Título da receita -->
 
         <hr>
 
-        <h3 class="h5 text-muted">Ingredientes Usados:</h3>
-        <p class="card-text mb-4">
+        <h3 class="h5 text-muted">Ingredientes Usados:</h3> <!-- Subtítulo para ingredientes -->
+        <p class="card-text mb-4"> <!-- Parágrafo para ingredientes -->
           <%= @recipe.ingredients %>
         </p>
 
-        <h3 class="h5 text-muted">Modo de Preparo:</h3>
-        <div class="card-text">
+        <h3 class="h5 text-muted">Modo de Preparo:</h3> <!-- Subtítulo para modo de preparo -->
+        <div class="card-text"> <!-- Texto do modo de preparo -->
           <%= simple_format(@recipe.instructions) %>
         </div>
       </div>
