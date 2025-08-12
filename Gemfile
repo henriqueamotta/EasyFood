@@ -67,6 +67,6 @@ gem "devise", "~> 4.9"
 
 gem "ruby-openai", "~> 8.1"
 
-gem "dotenv-rails", "~> 3.1", :groups => [:development, :test]
+gem "dotenv-rails", "~> 3.1", groups: [ :development, :test ]
 
 gem "cssbundling-rails", "~> 1.4"
