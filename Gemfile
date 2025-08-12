@@ -70,3 +70,5 @@ gem "ruby-openai", "~> 8.1"
 gem "dotenv-rails", "~> 3.1", groups: [ :development, :test ]
 
 gem "cssbundling-rails", "~> 1.4"
+
+gem "devise-i18n", "~> 1.14"
