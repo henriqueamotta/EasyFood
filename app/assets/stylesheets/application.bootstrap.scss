@@ -28,3 +28,11 @@ $body-color:    $dark; // Cor do texto do corpo
 .navbar-custom {
   background-color: $secondary;
 }
+
+// Efeito de hover para cartões
+.card-hover {
+  transition: transform 0.2s ease-in-out;
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
