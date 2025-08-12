@@ -25,7 +25,7 @@ class RecipesController < ApplicationController
       @recipe.image_url = service_response[:image_url] # Define a URL da imagem da receita com base na resposta do serviço
 
       if @recipe.save
-        redirect_to @recipe, notice: "Sua receita foi gerada com sucesso!" # Redireciona para a receita recém-criada com uma mensagem de sucesso
+        redirect_to @recipe, notice: t("recipes.create.success") # Redireciona para a receita recém-criada com uma mensagem de sucesso
       else
         render :new, status: :unprocessable_content # Renderiza o formulário novamente em caso de erro
       end
@@ -38,7 +38,7 @@ class RecipesController < ApplicationController
       puts e.backtrace.join("\n")
       puts "-----------------------------"
 
-      flash[:alert] = "A geração da sua receita demorou demais para responder. Por favor, tente novamente." # Captura qualquer erro e exibe uma mensagem de alerta
+      flash[:alert] = t("recipes.create.error") # Captura qualquer erro e exibe uma mensagem de alerta
       render :new, status: :unprocessable_content # Renderiza o formulário novamente em caso de erro
     end
   end

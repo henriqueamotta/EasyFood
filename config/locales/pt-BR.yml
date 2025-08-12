@@ -1,0 +1,10 @@
+pt-BR:
+  recipes:
+    new:
+      title: "Gerar Nova Receita"
+      description: "Descreva os ingredientes que você tem a disposição. Seja específico para melhores resultados!"
+      ingredients_label: "Meus Ingredientes:"
+      submit_button: "Gerar Receita"
+    create:
+      success: "Sua receita foi gerada com sucesso!"
+      error: "A geração da sua receita demorou demais para responder. Por favor, tente novamente."
