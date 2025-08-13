@@ -10,8 +10,8 @@
       <div class="col-md-6 col-lg-4 mb-4"> <!-- Em telas médias cada card ocupará 2 linhas e em telas grandes 3 linhas -->
         <%= link_to recipe, class: "text-decoration-none" do %> <!-- Link para a receita -->
           <div class="card h-100 shadow-sm card-hover"> <!-- Garante que todos os cards tenham o mesmo tamanho -->
-            <% if recipe.image_url.present? %>
-              <%= image_tag recipe.image_url, class: "card-img-top", alt: recipe.title %>
+            <% if recipe.photo.attached? %>
+              <%= image_tag recipe.photo, class: "card-img-top", alt: recipe.title %>
             <% end %>
             <div class="card-body">
               <h5 class="card-title text-dark"><%= recipe.title %></h5>
