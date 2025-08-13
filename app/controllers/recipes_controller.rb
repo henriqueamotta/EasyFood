@@ -18,16 +18,12 @@ class RecipesController < ApplicationController
 
     begin # Inicia o bloco de tratamento de exceções
 
-      service_response = RecipeGeneratorService.new(@recipe.ingredients).call # Chama o serviço para gerar a receita
-
-      @recipe.title = service_response[:title] # Define o título da receita com base na resposta do serviço
-      @recipe.instructions = service_response[:instructions] # Define as instruções da receita com base na resposta do serviço
-      @recipe.image_url = service_response[:image_url] # Define a URL da imagem da receita com base na resposta do serviço
+      RecipeGeneratorService.new(@recipe).call # Chama o serviço para gerar a receita
 
       if @recipe.save
-        redirect_to @recipe, notice: t("recipes.create.success") # Redireciona para a receita recém-criada com uma mensagem de sucesso
+        redirect_to @recipe, notice: t("recipes.create.success")
       else
-        render :new, status: :unprocessable_content # Renderiza o formulário novamente em caso de erro
+        render :new, status: :unprocessable_content
       end
 
     rescue Exception => e

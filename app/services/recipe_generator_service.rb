@@ -1,11 +1,55 @@
+require "open-uri" # Necessário para fazer download da imagem gerada
+
 class RecipeGeneratorService
-  def initialize(ingredients)
-    @ingredients = ingredients # Armazena os ingredientes fornecidos
+  def initialize(recipe)
+    @recipe = recipe # Armazena a receita fornecida
+    @ingredients = recipe.ingredients # Extrai os ingredientes da receita
     @client = OpenAI::Client.new # Inicializa o cliente OpenAI com a configuração definida no initializer
   end
 
   def call # Método principal que gera a receita
-    prompt = <<~PROMPT
+    text_prompt = create_text_prompt # Cria o prompt de texto para a geração da receita
+    recipe_response = @client.chat( # Envia a solicitação para a API OpenAI
+      parameters: {
+        model: "gpt-3.5-turbo",
+        messages: [ { role: "user", content: text_prompt } ],
+        temperature: 0.7
+      }
+    )
+    generated_text = recipe_response.dig("choices", 0, "message", "content") # Extrai o texto gerado da resposta
+    recipe_data = parse_generated_text(generated_text) # Analisa o texto gerado e extrai os dados da receita
+
+    # Atualiza os atributos da receita com os dados gerados
+    @recipe.title = recipe_data[:title]
+    @recipe.instructions = recipe_data[:instructions]
+
+    image_prompt = "Fotografia realista e de alta qualidade de um prato de #{@recipe.title} incrivelmente apetitoso. A iluminação é natural e suave, com foco nítido nos detalhes do prato e um fundo levemente desfocado. Parece uma foto profissional de comida, com texturas realistas, sem artefatos digitais." # Cria o prompt de imagem para a geração da foto
+    image_response = @client.images.generate(
+      parameters: {
+        model: "dall-e-3",
+        prompt: image_prompt,
+        n: 1,
+        size: "1792x1024"
+      }
+    )
+
+    # --- LINHA DE DEBUG ---
+    puts "RESPOSTA DA API DE IMAGEM: #{image_response.inspect}"
+    # ---------------------------
+
+    temp_image_url = image_response.dig("data", 0, "url") # Extrai a URL da imagem gerada
+
+    if temp_image_url.present? # Verifica se a URL da imagem está presente
+      image_file = URI.open(temp_image_url) # Abre a URL da imagem
+      @recipe.photo.attach(io: image_file, filename: "#{@recipe.title.parameterize}.png") # Anexa a imagem à receita
+    end
+    true # Indica que a geração da receita foi bem-sucedida
+  end
+
+  private
+
+  def create_text_prompt # Método para criar o prompt de texto para a geração da receita
+    <<~PROMPT
       Você é um chef de cozinha especializado em criar receitas deliciosas, saudáveis, criativas e fáceis de preparar. Sua tarefa é gerar uma receita deliciosa e fácil de seguir usando apenas os ingredientes fornecidos.
 
       Siga estritamente as seguintes regras:
@@ -18,33 +62,7 @@ class RecipeGeneratorService
 
       Ingredientes fornecidos: #{@ingredients}
     PROMPT
-
-    response = @client.chat( # Envia a solicitação para a API OpenAI
-      parameters: {
-        model: "gpt-3.5-turbo",
-        messages: [ { role: "user", content: prompt } ],
-        temperature: 0.7
-      }
-    )
-
-    generated_text = response.dig("choices", 0, "message", "content") # Extrai o texto gerado da resposta da API
-    recipe_data = parse_generated_text(generated_text) # Analisa o texto gerado e retorna um hash com o título e as instruções
-
-    image_prompt = "Uma foto deliciosa de #{recipe_data[:title]}, com foco nos detalhes apetitosos do prato." # Cria um prompt para gerar uma imagem da receita
-    image_response = @client.images.generate( # Envia a solicitação para a API de geração de imagens
-      parameters: {
-        model: "dall-e-3",
-        prompt: image_prompt,
-        n: 1,
-        size: "1792x1024"
-      }
-    )
-    image_url = image_response.dig("data", 0, "url") # Extrai a URL da imagem gerada
-
-    recipe_data.merge(image_url: image_url) # Adiciona a URL da imagem ao hash de dados da receita
   end
-
-  private
 
   def parse_generated_text(generated_text) # Método para analisar o texto gerado e extrair o título e as instruções
     return { title: "Erro: Formato de resposta inválido", instructions: generated_text } unless generated_text&.include?("TÍTULO:") && generated_text&.include?("INSTRUÇÕES:") # Verifica se o texto contém as seções esperadas
