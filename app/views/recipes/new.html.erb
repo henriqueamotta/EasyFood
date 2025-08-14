@@ -3,8 +3,8 @@
     <h1 class="card-title h2"><%= t('.title') %></h1> <!-- Título do formulário -->
     <p class="card-text text-muted"><%= t('.description') %></p> <!-- Descrição do formulário -->
 
-    <%= form_with(model: @recipe, local: true) do |form| %> <!-- Início do formulário -->
-      <div class="mb-3"> <!-- Div do campo de ingredientes -->
+    <%= form_with(model: @recipe, data: { controller: "form-submission", action: "submit->form-submission#submit" }) do |form| %> <!-- Início do formulário -->
+      <div class="mb-3">
         <%= form.label :ingredients, t('.ingredients_label'), class: "form-label" %>
         <%= form.text_area :ingredients,
                             rows: 5,
@@ -12,9 +12,14 @@
                             placeholder: "Ex: 2 peitos de frango, 1 lata de tomate pelado, 1 cebola..." %>
       </div>
 
-      <div class="d-grid gap-2"> <!-- Div do botão de envio -->
-        <%= form.submit t('.submit_button'), class: "btn btn-primary btn-lg" %> <!-- Botão de envio -->
+      <div class="d-grid gap-2"> <!-- Div para o botão de envio -->
+        <%# Adicionando 'data-form-submission-target' ao botão %>
+        <%= form.submit t('.submit_button'), class: "btn btn-primary btn-lg", data: { form_submission_target: "button" } %>
       </div>
     <% end %>
   </div>
 </div>
+
+<!-- linha 6: data-controller="form-submission": Controlador Stimulus para gerenciar o envio do formulário -->
+<!-- linha 6: data-action="submit->form-submission#submit": Ação que será chamada ao enviar o formulário -->
+<!-- linha 17: data-form-submission-target="button": Alvo do controlador Stimulus, refere-se ao botão de envio -->
