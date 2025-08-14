@@ -10,11 +10,18 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= recipes_path %>">Minhas Receitas</a>
-          </li>
-          <li class="nav-item">
-             <%= button_to "Sair", destroy_user_session_path, method: :delete, class: "btn btn-outline-light" %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i> <!-- Ícone de usuário do Bootstrap Icons -->
+              <%= current_user.name || current_user.email %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="<%= edit_user_registration_path %>">Editar Perfil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <%= button_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </li>
+            </ul>
           </li>
         <% else %>
           <li class="nav-item">
@@ -29,10 +36,10 @@
   </div>
 </nav>
 
-<!-- d-flex align-items-center: alinha os itens do navbar verticalmente ao centro -->
-<!-- image_tag "easyfood_logo.png": exibe o logo do EasyFood -->
-<!-- alt: "EasyFood Logo": define um texto alternativo para a imagem, que é crucial para acessibilidade -->
-<!-- style: "height: 35px; width: auto;": define a altura da imagem do logo e mantém a proporção -->
-<!-- height: 35px: define a altura do logo, podemos ajustar conforme necessário (30px ou 40px, p.ex.) -->
-<!-- width: auto: define a largura do logo como automática, mantendo a proporção da imagem -->
-<!-- span class="m-2">EasyFood</span>: adiciona uma margem horizontal de 2 unidades ao texto "EasyFood" -->
+<!-- linha 3: d-flex align-items-center: alinha os itens do navbar verticalmente ao centro -->
+<!-- linha 4: image_tag "easyfood_logo.png": exibe o logo do EasyFood -->
+<!-- linha 4: alt: "EasyFood Logo": define um texto alternativo para a imagem, que é crucial para acessibilidade -->
+<!-- linha 4: style: "height: 35px; width: auto;": define a altura da imagem do logo e mantém a proporção -->
+<!-- linha 4: height: 35px: define a altura do logo, podemos ajustar conforme necessário (30px ou 40px, p.ex.) -->
+<!-- linha 4: width: auto: define a largura do logo como automática, mantendo a proporção da imagem -->
+<!-- linha 5: span class="m-2">EasyFood</span>: adiciona uma margem horizontal de 2 unidades ao texto "EasyFood" -->
