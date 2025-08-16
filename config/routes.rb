@@ -15,5 +15,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root "recipes#index" # Define a página inicial como a lista de receitas
+  root "pages#home" # Define a página inicial a "home"
 end
