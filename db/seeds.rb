@@ -67,25 +67,48 @@ recipe5 = Recipe.create!(
   title: "Escondidinho de Carne Moída",
   ingredients: "carne moída, mandioca, queijo parmesão, manteiga, leite",
   instructions: "1. Cozinhe e amasse a mandioca para fazer um purê. 2. Refogue a carne moída. 3. Monte em uma travessa com o purê por cima. 4. Polvilhe queijo e leve ao forno para gratinar."
-  )
-  attach_image(recipe5, "escondidinho.png")
+)
+attach_image(recipe5, "escondidinho.png")
 
-  recipe6 = Recipe.create!(
-    user: user2,
-    title: "Linguiça Toscana Acebolada",
-    ingredients: "linguiça toscana, cebola, pão francês",
-    instructions: "1. Asse ou frite a linguiça. 2. Fatie e misture com rodelas de cebola refogadas. 3. Sirva como aperitivo ou no pão."
-    )
-    attach_image(recipe6, "linguica_acebolada.png")
+recipe6 = Recipe.create!(
+  user: user2,
+  title: "Linguiça Toscana Acebolada",
+  ingredients: "linguiça toscana, cebola, pão francês",
+  instructions: "1. Asse ou frite a linguiça. 2. Fatie e misture com rodelas de cebola refogadas. 3. Sirva como aperitivo ou no pão."
+)
+attach_image(recipe6, "linguica_acebolada.png")
 
-    recipe7 = Recipe.create!(
-      user: user1,
-      title: "Strogonoff de Filé de Frango",
-      ingredients: "filé de frango, creme de leite, ketchup, mostarda, champignon, arroz, batata palha",
-      instructions: "1. Doure o frango em cubos. 2. Adicione os demais ingredientes e misture bem. 3. Sirva com arroz e batata palha."
-      )
-# Reutilizando uma imagem para o exemplo
-attach_image(recipe7, "frango_grelhado.png")
+recipe7 = Recipe.create!(
+  user: user1,
+  title: "Strogonoff de Filé de Frango",
+  ingredients: "filé de frango, creme de leite, ketchup, mostarda, champignon, arroz, batata palha",
+  instructions: "1. Doure o frango em cubos. 2. Adicione os demais ingredientes e misture bem. 3. Sirva com arroz e batata palha."
+)
+attach_image(recipe7, "strogonoff_de_frango.png")
+
+recipe8 = Recipe.create!(
+  user: user2,
+  title: "Fricassê de Filé de Frango Cremoso",
+  ingredients: "filé de frango, milho verde, creme de leite, requeijão, batata palha, arroz",
+  instructions: "1. Cozinhe e desfie o filé de frango. 2. Bata o milho com o creme de leite no liquidificador. 3. Refogue o frango desfiado e junte o creme de milho e o requeijão. 4. Coloque em uma travessa, cubra com batata palha e leve ao forno para gratinar. 5. Sirva com arroz."
+)
+attach_image(recipe8, "fricasse_de_frango.png")
+
+recipe9 = Recipe.create!(
+  user: user1,
+  title: "Ragu de Linguiça Toscana com Polenta",
+  ingredients: "linguiça toscana, tomate pelado, cebola, alho, polenta",
+  instructions: "1. Retire a pele da linguiça e refogue a carne em uma panela. 2. Adicione cebola e alho. 3. Junte o tomate pelado e cozinhe em fogo baixo por 30 min. 4. Prepare a polenta e sirva com o ragu por cima."
+)
+attach_image(recipe9, "ragu_de_linguica.png")
+
+recipe10 = Recipe.create!(
+  user: user2,
+  title: "Cafta de Carne Moída no Espeto",
+  ingredients: "carne moída, cebola, alho, pimentão, cominho, sal, pimenta, espeto",
+  instructions: "1. Misture a carne moída com os temperos. 2. Modele em formato de linguiça no espeto. 3.  Grelhe na churrasqueira ou em uma frigideira até dourar."
+)
+attach_image(recipe10, "cafta_no_espeto.png")
 
 puts "Banco de dados populado com sucesso!"
 puts "#{User.count} usuários e #{Recipe.count} receitas criados."
