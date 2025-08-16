@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
     # Encontra os 5 ingredientes mais utilizados em todas as receitas
-    all_ingredients = Recipe.pluck(:ingredients).flap_map { |ing| ing.split(/,\s*/) } # Obtem todos os ingredientes
+    all_ingredients = Recipe.pluck(:ingredients).flat_map { |ing| ing.split(/,\s*/) } # Obtem todos os ingredientes
     ingredients_counts = all_ingredients.tally # Conta a ocorrência de cada ingrediente
     @top_ingredients = ingredients_counts.sort_by { |_, count| -count }.first(5).to_h # Ordena e pega os 5 mais utilizados
 
