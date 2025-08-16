@@ -12,7 +12,9 @@ class PagesController < ApplicationController
 
     @popular_recipes = Recipe.where(query_string, *query_values).limit(6).order("RANDOM()") # Seleciona receitas aleatórias que usam os 5 ingredientes mais populares
 
-    @latest_recipes = Recipe.order(created_at: :desc).limit(3) # Seleciona as 3 receitas mais recentes para a seção "Novidades"
+    # Encontra as 3 receitas mais recentes que não estão entre as populares
+    popular_recipes_ids = @popular_recipes.pluck(:id) # Obtem os IDs das receitas populares
+    @latest_recipes = Recipe.where.not(id: popular_recipes_ids).order(created_at: :desc).limit(3) # Seleciona as 3 receitas mais recentes que não estão entre as populares
   end
 
   def about
