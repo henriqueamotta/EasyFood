@@ -26,5 +26,8 @@ module EasyFood
 
     # Configuração de localização
     config.i18n.default_locale = :'pt-BR'
+
+    # Configuração de idiomas disponíveis
+    config.i18n.available_locales = [ :en, :es, :'pt-BR' ]
   end
 end
