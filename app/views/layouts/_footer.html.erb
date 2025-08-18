@@ -6,6 +6,13 @@
     <p class="mb-0">
       Um projeto criado por Henrique Motta. <%= link_to "Sobre", pages_about_path, class: "text-white" %>
     </p>
+    
+    <!-- Seletor de idiomas -->
+    <div class="mt-2">
+      <small>Idioma:</small>
+      <%= link_to "Português", url_for(locale: "pt-BR"), class: "text-white mx-1" %>
+      <%= link_to "English", url_for(locale: "en"), class: "text-white mx-1" %>
+      <%= link_to "Español", url_for(locale: "es"), class: "text-white mx-1" %>
   </div>
 </footer>
 
