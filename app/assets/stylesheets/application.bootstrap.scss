@@ -36,3 +36,13 @@ $body-color:    $dark; // Cor do texto do corpo
     transform: translateY(-5px);
   }
 }
+
+// Fonte padrão para todo o corpo do site
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+// Fonte personalizada para o nome da marca
+.font-brand {
+  font-family: 'Chela One', cursive;
+}
