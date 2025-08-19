@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
 
     begin # Inicia o bloco de tratamento de exceções
 
-      RecipeGeneratorService.new(@recipe).call # Chama o serviço para gerar a receita
+      RecipeGeneratorService.new(@recipe, I18n.locale).call # Chama o serviço para gerar a receita
 
       if @recipe.save
         redirect_to @recipe, notice: t(".success")
