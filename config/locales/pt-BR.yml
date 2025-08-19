@@ -1,4 +1,15 @@
 pt-BR:
+
+  pages:
+    home:
+      hero_title: "Sua inspiração diária na cozinha"
+      hero_subtitle: "Use os ingredientes que você já tem para criar pratos incríveis com a ajuda da nossa IA."
+      hero_cta_button: "Gerar uma Receita Agora"
+      popular_recipes_title: "Receitas Populares"
+      popular_recipes_subtitle: "As receitas que a comunidade mais está fazendo com os ingredientes do momento."
+      top_ingredients_title: "Ingredientes em Alta"
+      latest_recipes_title: "Últimas Receitas Adicionadas"
+
   recipes:
     new:
       title: "Gerar Nova Receita"

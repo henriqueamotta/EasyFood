@@ -1,3 +1,14 @@
 es:
+
+  pages:
+    home:
+      hero_title: "Tu inspiración diaria en la cocina"
+      hero_subtitle: "Usa los ingredientes que ya tienes para crear platos increíbles con la ayuda de nuestra IA."
+      hero_cta_button: "Generar una Receta Ahora"
+      popular_recipes_title: "Recetas Populares"
+      popular_recipes_subtitle: "Las recetas que la comunidad más está preparando con los ingredientes del momento."
+      top_ingredients_title: "Ingredientes en Tendencia"
+      latest_recipes_title: "Últimas Recetas Añadidas"
+
   navbar:
     welcome: "Hola"
