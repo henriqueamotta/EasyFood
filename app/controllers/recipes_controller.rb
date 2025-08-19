@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
       RecipeGeneratorService.new(@recipe).call # Chama o serviço para gerar a receita
 
       if @recipe.save
-        redirect_to @recipe, notice: t("recipes.create.success")
+        redirect_to @recipe, notice: t(".success")
       else
         render :new, status: :unprocessable_content
       end
@@ -34,7 +34,7 @@ class RecipesController < ApplicationController
       puts e.backtrace.join("\n")
       puts "-----------------------------"
 
-      flash[:alert] = t("recipes.create.error") # Captura qualquer erro e exibe uma mensagem de alerta
+      flash[:alert] = t(".error") # Captura qualquer erro e exibe uma mensagem de alerta
       render :new, status: :unprocessable_content # Renderiza o formulário novamente em caso de erro
     end
   end

@@ -24,5 +24,25 @@ en:
       creator_title: "About the Project"
       creator_paragraph: "Hello! I'm Henrique Motta, a full-stack developer passionate about technology with experience in the legal field. EasyFood is a project to explore the potential of artificial intelligence and solve a problem I faced every day, but mainly to put my programming knowledge into practice. I hope this tool makes your life in the kitchen easier and tastier!"
 
+  recipes:
+    new:
+      title: "Generate New Recipe"
+      description: "Describe the ingredients you have on hand. Be specific for best results!"
+      ingredients_label: "My Ingredients:"
+      submit_button: "Generate Recipe"
+    create:
+      success: "Your recipe was successfully generated!"
+      error: "Generating your recipe took too long to respond. Please try again."
+    index:
+      title: "My Recipes"
+      new_recipe_button: "Generate New Recipe"
+      empty_state_lead: "You haven't generated any recipes yet."
+      empty_state_prompt: "How about starting now?"
+      empty_state_cta_button: "Generate My First Recipe"
+    show:
+      ingredients_title: "Ingredients:"
+      instructions_title: "Instructions:"
+      back_button: "View All My Recipes"
+
   navbar:
     welcome: "Hello"
