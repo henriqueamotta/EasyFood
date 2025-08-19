@@ -10,5 +10,19 @@ es:
       top_ingredients_title: "Ingredientes en Tendencia"
       latest_recipes_title: "Últimas Recetas Añadidas"
 
+    about:
+      hero_title_html: "Dile adiós al<br>\"¿qué comemos hoy?\""
+      hero_subtitle: "EasyFood transforma los ingredientes que ya tienes en casa en recetas deliciosas y creativas, generadas por inteligencia artificial. ¡Se acabaron el desperdicio y la falta de inspiración en la cocina!"
+      mission_title: "Nuestra Misión: Cocinar con Inteligencia"
+      mission_paragraph: "Creemos que cocinar debe ser un acto de placer y creatividad, no de estrés. EasyFood nació de la idea de que la tecnología puede ser la mayor aliada en la cocina, ayudándote a ahorrar dinero, reducir el desperdicio de alimentos y, lo más importante, redescubrir la alegría de preparar tus propias comidas."
+      benefit_1_title: "Ahorra Dinero:"
+      benefit_1_text: "Usa lo que ya tienes en tu despensa y refrigerador."
+      benefit_2_title: "Reduce el Desperdicio:"
+      benefit_2_text: "Dale un final delicioso a esos ingredientes olvidados."
+      benefit_3_title: "Inspiración Infinita:"
+      benefit_3_text: "Recibe sugerencias de platos que nunca imaginaste."
+      creator_title: "Sobre el Proyecto"
+      creator_paragraph: "¡Hola! Soy Henrique Motta, un desarrollador full-stack apasionado por la tecnología con experiencia en el área legal. EasyFood es un proyecto para explorar el potencial de la inteligencia artificial y resolver un problema que enfrentaba todos los días, pero principalmente para poner en práctica mis conocimientos de programación. ¡Espero que esta herramienta haga tu vida en la cocina más fácil y sabrosa!"
+
   navbar:
     welcome: "Hola"
