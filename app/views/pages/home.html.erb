@@ -1,16 +1,16 @@
 <%# --- Seção Hero (Chamada Principal) --- %>
 <div class="text-center p-5 mb-4 bg-light rounded-3 shadow-sm">
   <div class="container-fluid py-5">
-    <h1 class="display-5 fw-bold">Sua inspiração diária na cozinha</h1>
-    <p class="fs-4 text-muted">Use os ingredientes que você já tem para criar pratos incríveis com a ajuda da nossa IA.</p>
-    <%= link_to "Gerar uma Receita Agora", new_recipe_path, class: "btn btn-primary btn-lg" %>
+    <h1 class="display-5 fw-bold"><%= t('.hero_title') %></h1>
+    <p class="fs-4 text-muted"><%= t('.hero_subtitle') %></p>
+    <%= link_to t('.hero_cta_button'), new_recipe_path, class: "btn btn-primary btn-lg" %>
   </div>
 </div>
 
 <%# --- Seção de Receitas Populares --- %>
 <div class="container px-4 py-5">
-  <h2 class="pb-2 border-bottom">Receitas Populares</h2>
-  <p class="text-muted">As receitas que a comunidade mais está fazendo com os ingredientes do momento.</p>
+  <h2 class="pb-2 border-bottom"><%= t('.popular_recipes_title') %></h2>
+  <p class="text-muted"><%= t('.popular_recipes_subtitle') %></p>
 
   <div class="row mt-4">
     <% @popular_recipes.each do |recipe| %>
@@ -32,7 +32,7 @@
 
 <%# --- Seção de Ingredientes em Alta --- %>
 <div class="container px-4 py-5">
-  <h2 class="pb-2 border-bottom">Ingredientes em Alta</h2>
+  <h2 class="pb-2 border-bottom"><%= t('.top_ingredients_title') %></h2>
   <div class="mt-4">
     <% @top_ingredients.each do |ingredient, count| %>
       <span class="badge rounded-pill text-bg-secondary me-2 mb-2 fs-6 p-2">
@@ -44,7 +44,7 @@
 
 <%# --- Seção de Últimas Receitas --- %>
 <div class="container px-4 py-5">
-  <h2 class="pb-2 border-bottom">Últimas Receitas Adicionadas</h2>
+  <h2 class="pb-2 border-bottom"><%= t('.latest_recipes_title') %></h2>
   <div class="row mt-4">
     <% @latest_recipes.each do |recipe| %>
       <div class="col-md-6 col-lg-4 mb-4">

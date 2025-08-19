@@ -1,0 +1,61 @@
+es:
+
+  pages:
+    home:
+      hero_title: "Tu inspiración diaria en la cocina"
+      hero_subtitle: "Usa los ingredientes que ya tienes para crear platos increíbles con la ayuda de nuestra IA."
+      hero_cta_button: "Generar una Receta Ahora"
+      popular_recipes_title: "Recetas Populares"
+      popular_recipes_subtitle: "Las recetas que la comunidad más está preparando con los ingredientes del momento."
+      top_ingredients_title: "Ingredientes en Tendencia"
+      latest_recipes_title: "Últimas Recetas Añadidas"
+
+    about:
+      hero_title_html: "Dile adiós al<br>\"¿qué comemos hoy?\""
+      hero_subtitle: "EasyFood transforma los ingredientes que ya tienes en casa en recetas deliciosas y creativas, generadas por inteligencia artificial. ¡Se acabaron el desperdicio y la falta de inspiración en la cocina!"
+      mission_title: "Nuestra Misión: Cocinar con Inteligencia"
+      mission_paragraph: "Creemos que cocinar debe ser un acto de placer y creatividad, no de estrés. EasyFood nació de la idea de que la tecnología puede ser la mayor aliada en la cocina, ayudándote a ahorrar dinero, reducir el desperdicio de alimentos y, lo más importante, redescubrir la alegría de preparar tus propias comidas."
+      benefit_1_title: "Ahorra Dinero:"
+      benefit_1_text: "Usa lo que ya tienes en tu despensa y refrigerador."
+      benefit_2_title: "Reduce el Desperdicio:"
+      benefit_2_text: "Dale un final delicioso a esos ingredientes olvidados."
+      benefit_3_title: "Inspiración Infinita:"
+      benefit_3_text: "Recibe sugerencias de platos que nunca imaginaste."
+      creator_title: "Sobre el Proyecto"
+      creator_paragraph: "¡Hola! Soy Henrique Motta, un desarrollador full-stack apasionado por la tecnología con experiencia en el área legal. EasyFood es un proyecto para explorar el potencial de la inteligencia artificial y resolver un problema que enfrentaba todos los días, pero principalmente para poner en práctica mis conocimientos de programación. ¡Espero que esta herramienta haga tu vida en la cocina más fácil y sabrosa!"
+
+  recipes:
+    new:
+      title: "Generar Nueva Receta"
+      description: "Describe los ingredientes que tienes disponibles. ¡Sé específico para obtener mejores resultados!"
+      ingredients_label: "Mis Ingredientes:"
+      submit_button: "Generar Receta"
+    create:
+       success: "¡Tu receta ha sido generada con éxito!"
+       error: "La generación de tu receta tardó demasiado en responder. Por favor, inténtalo de nuevo."
+
+    index:
+      title: "Mis Recetas"
+      new_recipe_button: "Generar Nueva Receta"
+      empty_state_lead: "No has generado ninguna receta todavía."
+      empty_state_prompt: "¿Qué tal si comienzas ahora?"
+      empty_state_cta_button: "Generar Mi Primera Receta"
+
+    show:
+      ingredients_title: "Ingredientes:"
+      instructions_title: "Modo de Preparo:"
+      back_button: "Ver Todas Mis Recetas"
+
+  layouts:
+    navbar:
+      welcome: "Hola"
+      my_recipes: "Mis Recetas"
+      edit_profile: "Editar Perfil"
+      sign_out: "Cerrar Sesión"
+      sign_in: "Iniciar Sesión"
+      sign_up: "Registrarse"
+    footer:
+      rights_reserved: "Todos los derechos reservados."
+      created_by: "Un proyecto creado por Henrique Motta."
+      about: "Sobre"
+      language: "Idioma:"
