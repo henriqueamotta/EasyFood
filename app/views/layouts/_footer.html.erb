@@ -1,15 +1,15 @@
 <footer class="bg-secondary text-white text-center py-3 mt-auto">
   <div class="container">
     <p class="mb-0">
-      &copy; <%= Time.now.year %> <span class="font-brand">EasyFood</span>. Todos os direitos reservados.
+      &copy; <%= Time.now.year %> <span class="font-brand">EasyFood</span>. <%= t("layouts.footer.rights_reserved") %>
     </p>
     <p class="mb-0">
-      Um projeto criado por Henrique Motta. <%= link_to "Sobre", pages_about_path, class: "text-white" %>
+      <%= t("layouts.footer.created_by") %> <%= link_to t("layouts.footer.about"), pages_about_path, class: "text-white" %>
     </p>
-    
+
     <!-- Seletor de idiomas -->
     <div class="mt-2">
-      <small>Idioma:</small>
+      <small><%= t("layouts.footer.language") %></small>
       <%= link_to "Português", url_for(locale: "pt-BR"), class: "text-white mx-1" %>
       <%= link_to "English", url_for(locale: "en"), class: "text-white mx-1" %>
       <%= link_to "Español", url_for(locale: "es"), class: "text-white mx-1" %>

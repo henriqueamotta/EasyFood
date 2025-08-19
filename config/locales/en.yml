@@ -44,5 +44,16 @@ en:
       instructions_title: "Instructions:"
       back_button: "View All My Recipes"
 
-  navbar:
-    welcome: "Hello"
+  layouts:
+    navbar:
+      welcome: "Hello"
+      my_recipes: "My Recipes"
+      edit_profile: "Edit Profile"
+      sign_out: "Sign Out"
+      sign_in: "Sign In"
+      sign_up: "Sign Up"
+    footer:
+      rights_reserved: "All rights reserved."
+      created_by: "A project created by Henrique Motta."
+      about: "About"
+      language: "Language:"

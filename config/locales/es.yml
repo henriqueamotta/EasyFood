@@ -46,5 +46,16 @@ es:
       instructions_title: "Modo de Preparo:"
       back_button: "Ver Todas Mis Recetas"
 
-  navbar:
-    welcome: "Hola"
+  layouts:
+    navbar:
+      welcome: "Hola"
+      my_recipes: "Mis Recetas"
+      edit_profile: "Editar Perfil"
+      sign_out: "Cerrar Sesión"
+      sign_in: "Iniciar Sesión"
+      sign_up: "Registrarse"
+    footer:
+      rights_reserved: "Todos los derechos reservados."
+      created_by: "Un proyecto creado por Henrique Motta."
+      about: "Sobre"
+      language: "Idioma:"

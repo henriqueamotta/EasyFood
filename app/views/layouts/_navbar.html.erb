@@ -13,22 +13,23 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-person-circle"></i> <!-- Ícone de usuário do Bootstrap Icons -->
-                <%= t('navbar.welcome') %>, <%= current_user.name || current_user.email %>
+                <%= t("layouts.navbar.welcome") %>, <%= current_user.name || current_user.email %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="<%= edit_user_registration_path %>">Editar Perfil</a></li>
+              <li><a class="dropdown-item" href="<%= recipes_path %>"><%= t("layouts.navbar.my_recipes") %></a></li>
+              <li><a class="dropdown-item" href="<%= edit_user_registration_path %>"><%= t("layouts.navbar.edit_profile") %></a></li>
               <li><hr class="dropdown-divider"></li>
               <li>
-                <%= button_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <%= button_to t("layouts.navbar.sign_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </li>
             </ul>
           </li>
         <% else %>
           <li class="nav-item">
-            <a class="nav-link" href="<%= new_user_session_path %>">Entrar</a>
+            <a class="nav-link" href="<%= new_user_session_path %>"><%= t("layouts.navbar.sign_in") %></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<%= new_user_registration_path %>">Cadastrar</a>
+            <a class="nav-link" href="<%= new_user_registration_path %>"><%= t("layouts.navbar.sign_up") %></a>
           </li>
         <% end %>
       </ul>
