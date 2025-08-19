@@ -9,6 +9,11 @@ pt-BR:
       popular_recipes_subtitle: "As receitas que a comunidade mais está fazendo com os ingredientes do momento."
       top_ingredients_title: "Ingredientes em Alta"
       latest_recipes_title: "Últimas Receitas Adicionadas"
+      login_wall:
+        title: "Acesso Exclusivo para Membros"
+        subtitle: "Cadastre-se ou faça login para ver as receitas mais recentes e ter acesso a todas as funcionalidades."
+        sign_up_button: "Criar Conta"
+        sign_in_button: "Fazer Login"
     about:
       about:
       hero_title_html: "Diga adeus ao<br>\"o que vamos comer hoje?\""

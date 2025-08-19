@@ -9,6 +9,11 @@ en:
       popular_recipes_subtitle: "The recipes the community is making the most with today's trending ingredients."
       top_ingredients_title: "Trending Ingredients"
       latest_recipes_title: "Latest Added Recipes"
+      login_wall:
+        title: "Exclusive Members Only Access"
+        subtitle: "Sign up or log in to see the latest recipes and access all features."
+        sign_up_button: "Create Account"
+        sign_in_button: "Log In"
 
     about:
       hero_title_html: "Say goodbye to<br>\"what are we eating today?\""

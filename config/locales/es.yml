@@ -9,6 +9,11 @@ es:
       popular_recipes_subtitle: "Las recetas que la comunidad más está preparando con los ingredientes del momento."
       top_ingredients_title: "Ingredientes en Tendencia"
       latest_recipes_title: "Últimas Recetas Añadidas"
+      login_wall:
+        title: "Acceso Exclusivo para Miembros"
+        subtitle: "Regístrate o inicia sesión para ver las últimas recetas y tener acceso a todas las funcionalidades."
+        sign_up_button: "Crear Cuenta"
+        sign_in_button: "Iniciar Sesión"
 
     about:
       hero_title_html: "Dile adiós al<br>\"¿qué comemos hoy?\""

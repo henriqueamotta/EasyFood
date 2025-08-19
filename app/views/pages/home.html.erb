@@ -45,20 +45,53 @@
 <%# --- Seção de Últimas Receitas --- %>
 <div class="container px-4 py-5">
   <h2 class="pb-2 border-bottom"><%= t('.latest_recipes_title') %></h2>
-  <div class="row mt-4">
-    <% @latest_recipes.each do |recipe| %>
-      <div class="col-md-6 col-lg-4 mb-4">
-        <%= link_to recipe, class: "text-decoration-none" do %>
-          <div class="card h-100 shadow-sm card-hover">
+
+  <%# Verifica se o usuário está logado %>
+  <% if user_signed_in? %>
+
+    <%# SE ESTIVER LOGADO: Mostra a galeria de cards normal %>
+    <div class="row mt-4">
+      <% @latest_recipes.each do |recipe| %>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <%= link_to recipe, class: "text-decoration-none" do %>
+            <div class="card h-100 shadow-sm card-hover">
+              <% if recipe.photo.attached? %>
+                <%= image_tag recipe.photo, class: "card-img-top", alt: recipe.title %>
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title text-dark"><%= recipe.title %></h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+  <% else %>
+
+    <%# SE NÃO ESTIVER LOGADO: Mostra uma sobreposição de "login necessário" %>
+    <div class="row mt-4 position-relative">
+      <%# Cards com efeito de desfoque %>
+      <% @latest_recipes.first(3).each do |recipe| %>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 shadow-sm" style="filter: blur(4px); opacity: 0.6;">
             <% if recipe.photo.attached? %>
-              <%= image_tag recipe.photo, class: "card-img-top", alt: recipe.title %>
+              <%= image_tag recipe.photo, class: "card-img-top", alt: "Receita bloqueada" %>
             <% end %>
             <div class="card-body">
               <h5 class="card-title text-dark"><%= recipe.title %></h5>
             </div>
           </div>
-        <% end %>
+        </div>
+      <% end %>
+
+      <%# Sobreposição com a chamada para ação %>
+      <div class="position-absolute top-50 start-50 translate-middle text-center bg-light p-4 rounded-3 shadow" style="width: 80%;">
+        <p><%= t('.login_wall.subtitle') %></p>
+        <%= link_to t('.login_wall.sign_up_button'), new_user_registration_path, class: "btn btn-primary" %>
+        <%= link_to t('.login_wall.sign_in_button'), new_user_session_path, class: "btn btn-secondary" %>
       </div>
-    <% end %>
-  </div>
+    </div>
+
+  <% end %>
 </div>
