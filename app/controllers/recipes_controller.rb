@@ -33,9 +33,14 @@ class RecipesController < ApplicationController
   def create
     @recipe = current_user.recipes.new(recipe_params) # Cria uma nova receita associada ao usuário logado
 
+    unless @recipe.valid? # Verifica se a receita é válida
+      render :new, status: :unprocessable_content # Renderiza o formulário novamente em caso de erro
+      return # Interrompe a execução do método
+    end
+
     begin # Inicia o bloco de tratamento de exceções
 
-      RecipeGeneratorService.new(@recipe, I18n.locale).call # Chama o serviço para gerar a receita
+      service_response = RecipeGeneratorService.new(@recipe, I18n.locale).call # Chama o serviço para gerar a receita
 
       if @recipe.save
         redirect_to @recipe, notice: t(".success")
