@@ -2,9 +2,8 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
   has_many :recipe_translations, dependent: :destroy
-  validates :title, presence: true
   validates :ingredients, presence: true
-  validates :instructions, presence: true
+  validates :title, :instructions, presence: true, on: :update
 
   def translation_for(locale) # Método que busca a tradução para um determinado idioma
     # Procura por uma tradução que já exista no banco de dados
@@ -24,5 +23,11 @@ class Recipe < ApplicationRecord
       ingredients: translated_data[:ingredients],
       instructions: translated_data[:instructions]
     )
+  end
+
+  private
+
+  def instructions_present? # Verifica se as instruções estão presentes
+    instructions.present?
   end
 end
