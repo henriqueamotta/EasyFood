@@ -1,12 +1,12 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user! # Garante que o usuário esteja logado para todas as ações
+  before_action :authenticate_user!, except: [ :show ] # Permite acesso público à ação "show"
 
   def index
     @recipes = current_user.recipes.order(created_at: :desc) # Exibe as receitas do usuário logado, ordenadas pela data de criação
   end
 
   def show
-    @recipe = current_user.recipes.find(params[:id]) # Encontra a receita específica do usuário logado
+    @recipe = Recipe.find(params[:id]) # Encontra a receita específica
 
     # Prepara as variáveis para exibição com o conteúdo original por padrão
     @display_title = @recipe.title
