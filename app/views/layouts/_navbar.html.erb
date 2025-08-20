@@ -8,12 +8,34 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto d-flex align-items-center">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="<%= language_selector_flag %>"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <%= link_to url_for(locale: 'pt-BR'), class: "dropdown-item" do %>
+                <span class="fi fi-br me-2"></span> Português
+              <% end %>
+            </li>
+            <li>
+              <%= link_to url_for(locale: 'en'), class: "dropdown-item" do %>
+                <span class="fi fi-us me-2"></span> English
+              <% end %>
+            </li>
+            <li>
+              <%= link_to url_for(locale: 'es'), class: "dropdown-item" do %>
+                <span class="fi fi-es me-2"></span> Español
+              <% end %>
+            </li>
+          </ul>
+        </li>
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-person-circle"></i> <!-- Ícone de usuário do Bootstrap Icons -->
-                <%= t("layouts.navbar.welcome") %>, <%= current_user.name || current_user.email %>
+              <%= t("layouts.navbar.welcome") %>, <%= current_user.name || current_user.email %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="<%= recipes_path %>"><%= t("layouts.navbar.my_recipes") %></a></li>

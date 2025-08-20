@@ -6,13 +6,6 @@
     <p class="mb-0">
       <%= t("layouts.footer.created_by") %> <%= link_to t("layouts.footer.about"), pages_about_path, class: "text-white" %>
     </p>
-
-    <!-- Seletor de idiomas -->
-    <div class="mt-2">
-      <small><%= t("layouts.footer.language") %></small>
-      <%= link_to "Português", url_for(locale: "pt-BR"), class: "text-white mx-1" %>
-      <%= link_to "English", url_for(locale: "en"), class: "text-white mx-1" %>
-      <%= link_to "Español", url_for(locale: "es"), class: "text-white mx-1" %>
   </div>
 </footer>
 
