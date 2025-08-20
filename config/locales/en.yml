@@ -62,3 +62,5 @@ en:
       created_by: "A project created by Henrique Motta."
       about: "About"
       language: "Language:"
+
+  image_prompt_prefix: "A high-quality, realistic photograph of a plate of"

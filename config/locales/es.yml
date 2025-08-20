@@ -64,3 +64,6 @@ es:
       created_by: "Un proyecto creado por Henrique Motta."
       about: "Sobre"
       language: "Idioma:"
+
+  image_prompt_prefix: "Una fotografía realista y de alta calidad de un plato de"
+

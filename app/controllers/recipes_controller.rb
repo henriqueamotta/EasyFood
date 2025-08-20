@@ -7,6 +7,23 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = current_user.recipes.find(params[:id]) # Encontra a receita específica do usuário logado
+
+    # Prepara as variáveis para exibição com o conteúdo original por padrão
+    @display_title = @recipe.title
+    @display_ingredients = @recipe.ingredients
+    @display_instructions = @recipe.instructions
+
+    # Verifica se o idioma da interface é diferente do padrão (pt-BR)
+    if I18n.locale != I18n.default_locale
+      translation = @recipe.translation_for(I18n.locale) # Pede ao modelo para buscar ou criar uma tradução
+
+      # Se a tradução foi encontrada ou criada com sucesso, usa os textos traduzidos
+      if translation
+        @display_title = translation.title # Exibe o título traduzido
+        @display_ingredients = translation.ingredients # Exibe os ingredientes traduzidos
+        @display_instructions = translation.instructions # Exibe as instruções traduzidas
+      end
+    end
   end
 
   def new
@@ -18,7 +35,7 @@ class RecipesController < ApplicationController
 
     begin # Inicia o bloco de tratamento de exceções
 
-      RecipeGeneratorService.new(@recipe).call # Chama o serviço para gerar a receita
+      RecipeGeneratorService.new(@recipe, I18n.locale).call # Chama o serviço para gerar a receita
 
       if @recipe.save
         redirect_to @recipe, notice: t(".success")

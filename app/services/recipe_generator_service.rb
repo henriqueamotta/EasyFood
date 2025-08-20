@@ -1,10 +1,11 @@
 require "open-uri" # Necessário para fazer download da imagem gerada
 
 class RecipeGeneratorService
-  def initialize(recipe)
+  def initialize(recipe, locale)
     @recipe = recipe # Armazena a receita fornecida
     @ingredients = recipe.ingredients # Extrai os ingredientes da receita
     @client = OpenAI::Client.new # Inicializa o cliente OpenAI com a configuração definida no initializer
+    @locale = locale # Armazena o idioma atual
   end
 
   def call # Método principal que gera a receita
@@ -23,7 +24,7 @@ class RecipeGeneratorService
     @recipe.title = recipe_data[:title]
     @recipe.instructions = recipe_data[:instructions]
 
-    image_prompt = "Fotografia realista e de alta qualidade de um prato de #{@recipe.title} incrivelmente apetitoso. A iluminação é natural e suave, com foco nítido nos detalhes do prato e um fundo levemente desfocado. Parece uma foto profissional de comida, com texturas realistas, sem artefatos digitais." # Cria o prompt de imagem para a geração da foto
+    image_prompt = "#{I18n.t('.image_prompt_prefix')} #{@recipe.title}" # Cria o prompt de imagem para a geração da foto
     image_response = @client.images.generate(
       parameters: {
         model: "dall-e-3",
@@ -53,12 +54,11 @@ class RecipeGeneratorService
       Você é um chef de cozinha especializado em criar receitas deliciosas, saudáveis, criativas e fáceis de preparar. Sua tarefa é gerar uma receita deliciosa e fácil de seguir usando apenas os ingredientes fornecidos.
 
       Siga estritamente as seguintes regras:
-      1. A resposta deve ser na língua que o usuário está falando.
-      2. A resposta DEVE ser apenas o texto da receita, sem nenhuma introdução ou comentário seu.
-      3. O formato da resposta DEVE ser exatamente:
-
+      1. A resposta DEVE ser apenas o texto da receita, sem nenhuma introdução ou comentário seu.
+      2. O formato da resposta DEVE ser exatamente:
       TÍTULO: [aqui o título criativo da receita]
       INSTRUÇÕES: [aqui o passo a passo do modo de preparo da receita, com cada passo numerado]
+      3. Gere a receita inteira (título e instruções) no seguinte idioma: #{@locale}.
 
       Ingredientes fornecidos: #{@ingredients}
     PROMPT
