@@ -5,7 +5,7 @@
 
     <%= form_with(model: @recipe, data: { controller: "form-submission", action: "submit->form-submission#submit" }) do |form| %> <!-- Início do formulário -->
       <div class="mb-3">
-        <%= form.label :ingredients, t('.ingredients_label'), class: "form-label" %>
+        <%= form.label :ingredients, t('recipes.new.ingredients_label'), class: "form-label" %>
         <%= form.text_area :ingredients,
                             rows: 5,
                             class: "form-control",
@@ -14,7 +14,7 @@
 
       <div class="d-grid gap-2"> <!-- Div para o botão de envio -->
         <%# Adicionando 'data-form-submission-target' ao botão %>
-        <%= form.submit t('.submit_button'), class: "btn btn-primary btn-lg", data: { form_submission_target: "button" } %>
+        <%= form.submit t('recipes.new.submit_button'), class: "btn btn-primary btn-lg", data: { form_submission_target: "button" } %>
       </div>
     <% end %>
   </div>
