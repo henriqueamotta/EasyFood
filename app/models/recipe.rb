@@ -2,6 +2,9 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
   has_many :recipe_translations, dependent: :destroy
+  validates :title, presence: true
+  validates :ingredients, presence: true
+  validates :instructions, presence: true
 
   def translation_for(locale) # Método que busca a tradução para um determinado idioma
     # Procura por uma tradução que já exista no banco de dados
