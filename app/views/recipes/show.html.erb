@@ -9,12 +9,12 @@
           <div class="text-center"> <!-- Centraliza a imagem -->
             <%= image_tag @recipe.photo,
                           class: "img-fluid rounded-3 mb-4 w-75",
-                          alt: @recipe.title %>
+                          alt: @display_title %>
           </div>
         <% end %>
         <%# ------------------------------------ %>
 
-        <h1 class="card-title h2"><%= @recipe.title %></h1> <!-- Título da receita -->
+        <h1 class="card-title h2"><%= @display_title %></h1> <!-- Título da receita -->
 
         <hr>
 
@@ -25,7 +25,7 @@
 
         <h3 class="h5 text-muted"><%= t('.instructions_title') %></h3> <!-- Subtítulo para modo de preparo -->
         <div class="card-text"> <!-- Texto do modo de preparo -->
-          <%= simple_format(@recipe.instructions) %>
+          <%= simple_format(@display_instructions) %>
         </div>
       </div>
     </div>
