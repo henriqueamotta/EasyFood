@@ -32,6 +32,7 @@ class RecipeTranslatorService
       3. O formato da resposta DEVE ser exatamente:
 
       TÍTULO: [aqui o título traduzido]
+      INGREDIENTES: [aqui a lista de ingredientes traduzida]
       INSTRUÇÕES: [aqui as instruções traduzidas]
 
       Idioma Alvo para a Tradução: #{@target_locale}
@@ -40,17 +41,19 @@ class RecipeTranslatorService
       Texto Original para Traduzir:
 
       TÍTULO: #{@recipe.title}
+      INGREDIENTES: #{@recipe.ingredients}
       INSTRUÇÕES: #{@recipe.instructions}
     PROMPT
   end
 
   def parse_translated_text(text)
     # Retorna nulo se a resposta da IA não vier no formato esperado
-    return nil unless text&.include?("TÍTULO:") && text&.include?("INSTRUÇÕES:")
+    return nil unless text&.include?("TÍTULO:") && text&.include?("INGREDIENTES:") && text&.include?("INSTRUÇÕES:")
 
-    title = text.match(/TÍTULO:(.*?)INSTRUÇÕES:/m)[1].strip
+    title = text.match(/TÍTULO:(.*?)INGREDIENTES:/m)[1].strip
+    ingredients = text.match(/INGREDIENTES:(.*?)INSTRUÇÕES:/m)[1].strip
     instructions = text.match(/INSTRUÇÕES:(.*)/m)[1].strip
 
-    { title: title, instructions: instructions }
+    { title: title, ingredients: ingredients, instructions: instructions }
   end
 end

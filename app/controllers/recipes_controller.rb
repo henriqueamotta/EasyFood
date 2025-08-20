@@ -9,8 +9,9 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.find(params[:id]) # Encontra a receita específica do usuário logado
 
     # Prepara as variáveis para exibição com o conteúdo original por padrão
-    @display_title = @recipe.display_title
-    @display_instructions = @recipe.display_instructions
+    @display_title = @recipe.title
+    @display_ingredients = @recipe.ingredients
+    @display_instructions = @recipe.instructions
 
     # Verifica se o idioma da interface é diferente do padrão (pt-BR)
     if I18n.locale != I18n.default_locale
@@ -19,10 +20,10 @@ class RecipesController < ApplicationController
       # Se a tradução foi encontrada ou criada com sucesso, usa os textos traduzidos
       if translation
         @display_title = translation.title # Exibe o título traduzido
+        @display_ingredients = translation.ingredients # Exibe os ingredientes traduzidos
         @display_instructions = translation.instructions # Exibe as instruções traduzidas
       end
     end
-
   end
 
   def new

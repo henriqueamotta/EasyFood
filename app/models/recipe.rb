@@ -18,6 +18,7 @@ class Recipe < ApplicationRecord
     recipe_translations.create(
       locale: locale.to_s,
       title: translated_data[:title],
+      ingredients: translated_data[:ingredients],
       instructions: translated_data[:instructions]
     )
   end
