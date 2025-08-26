@@ -75,6 +75,6 @@ gem "dotenv-rails", "~> 3.1", groups: [ :development, :test ]
 
 gem "cssbundling-rails", "~> 1.4"
 
-gem "devise-i18n", "~> 1.14"
+gem "devise-i18n", "~> 1.15"
 
 gem "rails-i18n", "~> 8.0"
