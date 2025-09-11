@@ -38,6 +38,7 @@ en:
     create:
       success: "Your recipe was successfully generated!"
       error: "Generating your recipe took too long to respond. Please try again."
+      api_error: "Sorry, our recipe generation service is temporarily unavailable. Please try again later."
     index:
       title: "My Recipes"
       new_recipe_button: "Generate New Recipe"
