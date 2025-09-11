@@ -39,7 +39,6 @@ class RecipesController < ApplicationController
     end
 
     begin # Inicia o bloco de tratamento de exceções
-
       service_response = RecipeGeneratorService.new(@recipe, I18n.locale).call # Chama o serviço para gerar a receita
 
       if @recipe.save
@@ -48,14 +47,20 @@ class RecipesController < ApplicationController
         render :new, status: :unprocessable_content
       end
 
+    rescue OpenAI::Error => e
+      # --- Bloco de debug detalhado ---
+      puts "--- ERRO DETALHADO DA API OPENAI ---"
+      puts "MENSAGEM: #{e.message}"
+      flash[:alert] = t(".api_error") # Mensagem específica para erros da API
+      render :new, status: :unprocessable_content # Renderiza o formulário novamente em caso de erro
+
     rescue Exception => e
       # --- Bloco de debug detalhado ---
-      puts "--- ERRO DETALHADO DA API ---"
+      puts "--- ERRO INESPERADO ---"
       puts "MENSAGEM: #{e.message}"
       puts "BACKTRACE:"
       puts e.backtrace.join("\n")
       puts "-----------------------------"
-
       flash[:alert] = t(".error") # Captura qualquer erro e exibe uma mensagem de alerta
       render :new, status: :unprocessable_content # Renderiza o formulário novamente em caso de erro
     end

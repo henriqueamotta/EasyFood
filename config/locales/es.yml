@@ -38,6 +38,7 @@ es:
     create:
        success: "¡Tu receta ha sido generada con éxito!"
        error: "La generación de tu receta tardó demasiado en responder. Por favor, inténtalo de nuevo."
+       api_error: "Lo sentimos, nuestro servicio de generación de recetas está temporalmente no disponible. Por favor, inténtalo de nuevo más tarde."
 
     index:
       title: "Mis Recetas"
@@ -66,4 +67,3 @@ es:
       language: "Idioma:"
 
   image_prompt_prefix: "Una fotografía realista y de alta calidad de un plato de"
-
