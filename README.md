@@ -69,7 +69,7 @@ You will need the following tools installed on your system:
 
 1.  **Clone the repository:**
     ```sh
-    git clone [https://github.com/henriqueamotta/EasyFood.git](https://github.com/henriqueamotta/EasyFood.git)
+    git clone https://github.com/henriqueamotta/EasyFood.git
     cd EasyFood
     ```
 
@@ -203,7 +203,7 @@ Você precisará ter as seguintes ferramentas instaladas na sua máquina:
 
 1.  **Clone o repositório:**
     ```sh
-    git clone [https://github.com/henriqueamotta/EasyFood.git](https://github.com/henriqueamotta/EasyFood.git)
+    git clone https://github.com/henriqueamotta/EasyFood.git
     cd EasyFood
     ```
 
